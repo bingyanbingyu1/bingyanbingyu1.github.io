@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Serv00/Hostuno-sb-yg一键脚本</title>
+      <link href="/2025/03/29/Serv00-Hostuno-sb-yg%E4%B8%80%E9%94%AE%E8%84%9A%E6%9C%AC/"/>
+      <url>/2025/03/29/Serv00-Hostuno-sb-yg%E4%B8%80%E9%94%AE%E8%84%9A%E6%9C%AC/</url>
+      
+        <content type="html"><![CDATA[<h2 id="sing-box-yg项目介绍"><a href="#sing-box-yg项目介绍" class="headerlink" title="sing-box-yg项目介绍"></a>sing-box-yg项目介绍</h2><p><a href="https://github.com/yonggekkk/sing-box-yg">yonggekkk&#x2F;sing-box-yg</a>是一个增强版的sing-box实现，提供简单易用的一键安装脚本。</p><h2 id="一键安装"><a href="#一键安装" class="headerlink" title="一键安装"></a>一键安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/install.sh)</span><br></pre></td></tr></table></figure><h2 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h2><ul><li>自动安装最新版sing-box</li><li>自动配置系统服务</li><li>支持多种协议</li><li>内置Web面板</li></ul><h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><ol><li>启动服务：</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start sing-box</span><br></pre></td></tr></table></figure><ol start="2"><li>查看状态：</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status sing-box</span><br></pre></td></tr></table></figure><ol start="3"><li>配置文件位置：</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/sing-box/config.json</span><br></pre></td></tr></table></figure><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><ol><li>端口冲突：修改config.json中的端口号</li><li>更新方法：重新运行安装脚本</li><li>卸载方法：</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/yonggekkk/sing-box-yg/main/uninstall.sh)</span><br></pre></td></tr></table></figure><style>.video-container {    position: relative;    width: 100%;    padding-top: 56.25%;}.video-container iframe {    position: absolute;    top: 0;    left: 0;    width: 100%;    height: 100%;}</style>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> sing-box </tag>
+            
+            <tag> 代理 </tag>
+            
+            <tag> 一键脚本 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>博客配置教学</title>
       <link href="/2025/03/29/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E6%95%99%E5%AD%A6/"/>
       <url>/2025/03/29/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E6%95%99%E5%AD%A6/</url>
