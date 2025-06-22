@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>利用GitHub搭建4核16GB运行内存的美国服务器！网络速度超级快！</title>
+      <link href="/2025/06/22/%E5%88%A9%E7%94%A8GitHub%E6%90%AD%E5%BB%BA%E9%AB%98%E9%85%8D%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+      <url>/2025/06/22/%E5%88%A9%E7%94%A8GitHub%E6%90%AD%E5%BB%BA%E9%AB%98%E9%85%8D%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+      
+        <content type="html"><![CDATA[<h4 id="利用GitHub搭建4核16GB运行内存的美国服务器！网络速度超级快！"><a href="#利用GitHub搭建4核16GB运行内存的美国服务器！网络速度超级快！" class="headerlink" title="利用GitHub搭建4核16GB运行内存的美国服务器！网络速度超级快！"></a>利用GitHub搭建4核16GB运行内存的美国服务器！网络速度超级快！</h4><p>通过GitHub代码空间功能，利用docker命令可以创建一个系统容器，比如Windows11也可以是其他的操作系统，通过内网穿透，实现远程控制这台服务器。可以用来搭建节点，每个月可以白嫖120小时的超高速网络！</p><p>视频教程：<a href="https://youtu.be/b6doF2jlM-g">https://youtu.be/b6doF2jlM-g</a></p><p>注意：跑大流量有封号风险，请务必准备多几个小号来测试，建议模拟真实开发环境后再跑节点，先跑几个正常程序员开发的项目，降低被检测风险，仅供学习交流，请勿用于非法用途。</p><hr><h5 id="1-创建一个私密仓库"><a href="#1-创建一个私密仓库" class="headerlink" title="1. 创建一个私密仓库"></a>1. 创建一个私密仓库</h5><p><a href="https://github.com/">https://github.com</a></p><h5 id="2-打开该仓库的代码空间-创建代码空间"><a href="#2-打开该仓库的代码空间-创建代码空间" class="headerlink" title="2.打开该仓库的代码空间 &gt; 创建代码空间"></a>2.打开该仓库的代码空间 &gt; 创建代码空间</h5><h5 id="3-创建一个docker可执行文件"><a href="#3-创建一个docker可执行文件" class="headerlink" title="3.创建一个docker可执行文件"></a>3.创建一个docker可执行文件</h5><p>比如我要创建一个window轻量级的系统：windows.yaml<br>如果要部署其它系统可以复制让AI帮你修改</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">services:</span><br><span class="line">  windows-ltsc:</span><br><span class="line">    image: dockurr/windows</span><br><span class="line">    container_name: win10-ltsc</span><br><span class="line">    environment:</span><br><span class="line">      VERSION: &quot;10&quot;          # 使用 Windows 10 LTSC 长期服务版（无应用商店/Edge等冗余组件）</span><br><span class="line">      EDITION: &quot;Enterprise&quot;  # 企业版更适合轻量化</span><br><span class="line">      USERNAME: &quot;meegooboo&quot;  # 账户名</span><br><span class="line">      PASSWORD: &quot;meegooboo&quot; # 密码</span><br><span class="line">      RAM_SIZE: &quot;8G&quot;         # 内存减至 8GB（LTSC 最低要求2G）</span><br><span class="line">      CPU_CORES: &quot;4&quot;         # CPU 核心数</span><br><span class="line">      DISK_SIZE: &quot;64G&quot;       # 磁盘精简至 64GB（LTSC 安装后仅需 12GB）</span><br><span class="line">      DISABLE_VIRTIO: &quot;true&quot; # 禁用虚拟驱动（提升老硬件兼容性）</span><br><span class="line">      SKIP_TPM_CHECK: &quot;true&quot; # 绕过 TPM 检查（减少启动项）</span><br><span class="line">    devices:</span><br><span class="line">      - /dev/kvm</span><br><span class="line">      - /dev/net/tun</span><br><span class="line">    cap_add:</span><br><span class="line">      - NET_ADMIN</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;8007:8006&quot;          # 修改 Web 控制台端口避免冲突</span><br><span class="line">      - &quot;3390:3389/tcp&quot;      # 修改 RDP 端口避免冲突</span><br><span class="line">    stop_grace_period: 1m    # 缩短关闭等待时间</span><br><span class="line">    restart: unless-stopped   # 异常时自动重启</span><br></pre></td></tr></table></figure><h5 id="4-启动系统"><a href="#4-启动系统" class="headerlink" title="4. 启动系统"></a>4. 启动系统</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose -f 你的文件名称.yaml up</span><br></pre></td></tr></table></figure><h5 id="5-通过VS-Code内置的内网穿透工具-穿透控制端口-打开链接即可远程控制该服务器"><a href="#5-通过VS-Code内置的内网穿透工具-穿透控制端口-打开链接即可远程控制该服务器" class="headerlink" title="5.通过VS Code内置的内网穿透工具 &gt; 穿透控制端口 &gt; 打开链接即可远程控制该服务器"></a>5.通过VS Code内置的内网穿透工具 &gt; 穿透控制端口 &gt; 打开链接即可远程控制该服务器</h5>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> GitHub </tag>
+            
+            <tag> 服务器 </tag>
+            
+            <tag> Docker </tag>
+            
+            <tag> Codespaces </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【教程】MCP 保姆级教程</title>
       <link href="/2025/04/14/%E3%80%90%E6%95%99%E7%A8%8B%E3%80%91MCP-%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/"/>
       <url>/2025/04/14/%E3%80%90%E6%95%99%E7%A8%8B%E3%80%91MCP-%E4%BF%9D%E5%A7%86%E7%BA%A7%E6%95%99%E7%A8%8B/</url>
